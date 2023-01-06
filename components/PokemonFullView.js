@@ -25,22 +25,53 @@ export default function PokemonFullView(props) {
     return ( 
         (pokemonData == null) ? 
         <Text style={styles.loading}>Loading</Text> : 
-        <ScrollView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.main_container}>
             <Text style={styles.name_text}>{pokemonData.name}</Text>
             <Image style={styles.image} source={{uri: (pokemonData.sprites.other["official-artwork"].front_default)}}/>    
             <PokemonTypeDisplay types={pokemonData.types} />
+            <PokemonAbilityDisplay abilities={pokemonData.abilities} />
         </ScrollView>  
     )
 }
 
 // this component displays the image of the Pokemon type
 function PokemonTypeDisplay(props) { 
-
     useEffect(() => {console.log(props.types[0].type.name)})
     return (
         (props.types.length == 1) ?
         <Text style={styles.type_text}>{props.types[0].type.name}</Text> : 
         <Text style={styles.type_text}>{props.types[0].type.name}/{props.types[1].type.name}</Text>
+    )
+}
+
+// this component displays the abilities of the Pokemon
+function PokemonAbilityDisplay(props) {
+    const [abilities, setAbilities] = useState([]);
+    const [hiddenAbilities, setHiddenAbilities] = useState([]);
+
+    useEffect(() =>{
+        // sort abilities by normal and hidden abilities
+        for (let i = 0; i < props.abilities.length; i++) {
+            if (props.abilities[i].is_hidden == true) {
+                console.log(props.abilities[i].ability.name);
+                setHiddenAbilities(abilities => [...abilities, props.abilities[i].ability.name]);
+            } else {
+                setAbilities(abilities => [...abilities, props.abilities[i].ability.name]);
+                console.log(props.abilities[i]);
+            }
+        }
+    }, [])
+
+    return (
+        <View style={styles.centered_container}>
+            <Text style={styles.statistic_font}>Abilities:</Text>
+            {abilities.length == 0 && hiddenAbilities.length == 0 ? <Text>Empty</Text> : 
+                <View>
+                    <View style={styles.ability_container}>{abilities.map((ability) => <Text style={styles.ability_text}>{ability}</Text>)}</View>
+                    <View style={styles.centered_container}>{hiddenAbilities.map((ability) => <Text style={styles.ability_text}>{ability}</Text>)}</View>
+                </View>
+            }
+        </View>
     )
 }
 
@@ -51,16 +82,53 @@ const styles = StyleSheet.create({
         fontWeight: "500",
         fontFamily: "Roboto",
     },
-    container: {
+    centered_container: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        width: '100%'
+    },
+    main_container: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        width: '100%',
+        backgroundColor: "#AAAAAA",
+        padding: 15,
+        borderRadius: 15,
+    },
+    name_text: {
+        fontSize: 25, 
+        fontWeight: "500",
+        width: '100%',
+        textAlign: "center",
     },
     image: {
         width: '80%',
         aspectRatio: 1/1,
     },
+    type_text: {
+        width: '100%',
+        textAlign: "center",
+        fontWeight: "400",
+        fontSize: 20,
+        fontStyle: "italic",
+        color: "#EEEEEE"
+    },
+    statistic_font: {
+        fontSize: 15, 
+        width: '100%',
+        fontWeight: "500",
+        textAlign: "center",
+    },
+    ability_container: {
+        display: "flex",
+        flexDirection: "row",
+    },
+    ability_text: {
+        marginHorizontal: 3,
+        marginVertical: 1,
+    }
     
 })

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
 import { View, Text, StyleSheet } from "react-native";
-import { PokemonListView } from "./PokemonListView";
+import PokemonListView from "./PokemonListView";
 
 export default function PokemonList() {
     const [pokemonList, setPokemonList] = useState([]);

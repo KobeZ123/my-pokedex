@@ -23,7 +23,7 @@ export default function PokemonListView(props) {
 
     return ( 
         (pokemonData == null) ? 
-        <Text>Loading</Text> : 
+        <Text style={styles.loading}>Loading</Text> : 
         <View style={styles.container}>
             <Image style={styles.image} source={{uri: (pokemonData.sprites.other["official-artwork"].front_default)}}/>    
             <Text style={styles.name_text}>{pokemonData.name}</Text>
@@ -49,6 +49,12 @@ function PokemonTypeDisplay(props) {
 
 
 const styles = StyleSheet.create({
+    loading: {
+        textAlign: "center", 
+        fontSize: 20,
+        fontWeight: "500",
+        fontFamily: "Roboto",
+    },
     container: {
         display: "flex",
         flexDirection: "row",
@@ -56,9 +62,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-around",
         textAlign: "center",
-        width: '60%',
+        width: '80%',
         backgroundColor: "#AAAAAA",
-        padding: 15,
+        paddingHorizontal: 5,
+        paddingVertical: 15,
         borderRadius: 10,
         margin: 5,
         
@@ -66,11 +73,11 @@ const styles = StyleSheet.create({
     name_text: {
         fontSize: 20, 
         fontWeight: "500",
-        width: '60%',
+        width: '50%',
         textAlign: "center",
     },
     image: {
-        width: '10%',
+        width: '20%',
         aspectRatio: 1/1,
         // mixBlendMode: "multiply"
     },
@@ -78,7 +85,7 @@ const styles = StyleSheet.create({
         width: '30%',
         textAlign: "center",
         fontWeight: "400",
-        fontSize: 20,
+        fontSize: 15,
         fontStyle: "italic",
         color: "#EEEEEE"
     }
