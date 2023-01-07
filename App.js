@@ -19,7 +19,7 @@ export default function App() {
       <PokemonSearcher/>
       {/* <PokemonList/> */}
       <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
-      <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/rockruff"/>
+      <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/>
     </View>
   );
 }

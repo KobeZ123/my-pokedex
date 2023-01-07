@@ -30,6 +30,7 @@ export default function PokemonFullView(props) {
             <Image style={styles.image} source={{uri: (pokemonData.sprites.other["official-artwork"].front_default)}}/>    
             <PokemonTypeDisplay types={pokemonData.types} />
             <PokemonAbilityDisplay abilities={pokemonData.abilities} />
+            <PokemonStatsDisplay stats={pokemonData.stats} />
         </ScrollView>  
     )
 }
@@ -55,22 +56,85 @@ function PokemonAbilityDisplay(props) {
             if (props.abilities[i].is_hidden == true) {
                 console.log(props.abilities[i].ability.name);
                 setHiddenAbilities(abilities => [...abilities, props.abilities[i].ability.name]);
+                console.log(hiddenAbilities);
             } else {
+                console.log(props.abilities[i].ability.name);
                 setAbilities(abilities => [...abilities, props.abilities[i].ability.name]);
-                console.log(props.abilities[i]);
+                console.log(abilities);
             }
         }
+        console.log(abilities);
     }, [])
+
+    useEffect(() => {
+        console.log(abilities);
+    }, [abilities])
 
     return (
         <View style={styles.centered_container}>
             <Text style={styles.statistic_font}>Abilities:</Text>
-            {abilities.length == 0 && hiddenAbilities.length == 0 ? <Text>Empty</Text> : 
+            {abilities.length == 0 && hiddenAbilities.length == 0 ? <Text style={styles.loading}>Empty</Text> : 
                 <View>
-                    <View style={styles.ability_container}>{abilities.map((ability) => <Text style={styles.ability_text}>{ability}</Text>)}</View>
-                    <View style={styles.centered_container}>{hiddenAbilities.map((ability) => <Text style={styles.ability_text}>{ability}</Text>)}</View>
+                    <View style={styles.ability_container}>{abilities.map((ability) => <Text style={styles.ability_text} key={ability}>{ability}</Text>)}</View>
+                    <View style={styles.centered_container}>{hiddenAbilities.map((ability) => <Text style={styles.ability_text} key={ability}>{ability}</Text>)}</View>
                 </View>
             }
+        </View>
+    )
+}
+
+// this components displays the stats of the Pokemon 
+function PokemonStatsDisplay(props) {
+    // // a stat is an array where the first index is the stat name and the second index is the stat value 
+    const [statsList, setStatsList] = useState([]);
+
+    useEffect(() => {
+        // for (let i = 0; i < props.stats.length; i++) {
+        //     setStatsList(statsList => [...statsList, props.stats[i].stat.name]);
+        //     console.log(props.stats[i].stat.name);
+      
+        //     console.log(statsList);
+        // };
+        // add stats to the list of stats 
+        props.stats.forEach((element) => {
+            setStatsList(statsList => [...statsList, [element.stat.name, element.base_stat]]);
+            console.log([element.stat.name, element.base_stat]);
+            console.log(statsList);
+        });
+        console.log(statsList.length);
+    }, [])
+
+    useEffect(() => {
+        console.log(statsList);
+        console.log(statsList.length);
+    }, [statsList])
+
+    
+    return (
+        <View style={styles.centered_container}>
+            <Text style={styles.statistic_font}>Stats:</Text>
+            {statsList.length == 0 ? <Text style={styles.loading}>Empty</Text> :
+                <View>
+                    {statsList.map((stat_line) => 
+                        <View style={styles.stat_line_container}>
+                            <Text style={styles.ability_text}>{stat_line[0]}</Text>
+                            <Text style={styles.ability_text}>{stat_line[1]}</Text>
+                        </View>
+                    )}
+                </View>
+            }
+        </View>
+    )
+}
+
+// this component displays the moves of the Pokemon 
+function PokemonMoveDisplay(props) {
+    useEffect(() => {
+
+    }, [])
+    return (
+        <View>
+
         </View>
     )
 }
@@ -129,6 +193,11 @@ const styles = StyleSheet.create({
     ability_text: {
         marginHorizontal: 3,
         marginVertical: 1,
+    },
+    stat_line_container: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
     }
     
 })
