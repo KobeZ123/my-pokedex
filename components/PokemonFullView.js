@@ -129,12 +129,29 @@ function PokemonStatsDisplay(props) {
 
 // this component displays the moves of the Pokemon 
 function PokemonMoveDisplay(props) {
+    const [movesList, setMovesList] = useState([]);
+
     useEffect(() => {
+        props.moves.forEach((element) => {
+            setMovesList(movesList => [...movesList, element.move.name]);
+    
+            console.log(movesList);
+        });
+        console.log(movesList.length);
 
     }, [])
     return (
         <View>
-
+            <Text style={styles.statistic_font}>Moves:</Text>
+            {movesList.length == 0 ? <Text style={styles.loading}>Empty</Text> :
+                <View>
+                    {movesList.map((move) => 
+                        <View style={styles.stat_line_container}>
+                            <Text style={styles.ability_text}>{move}</Text>
+                        </View>
+                    )}
+                </View>
+            }
         </View>
     )
 }
