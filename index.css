@@ -1,0 +1,5 @@
+@font-face {
+    font-family: "Orbitron";   /*Can be any text*/
+    src: local("Orbitron"),
+      url("./fonts/Orbitron.ttf") format("truetype");
+  }

@@ -7,6 +7,7 @@ import PokemonSearcher from './components/PokemonSearcher';
 import PokemonList from './components/PokemonList';
 import PokemonListView from './components/PokemonListView';
 import PokemonFullView from './components/PokemonFullView';
+import PokemonListViewLoading from './components/PokemonListViewLoading';
 
 export default function App() {
  
@@ -20,6 +21,7 @@ export default function App() {
       {/* <PokemonList/> */}
       <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
       <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/>
+      <PokemonListViewLoading/>
     </View>
   );
 }

@@ -5,13 +5,17 @@ import { View, StyleSheet, TextInput, Text } from "react-native"
 export default function PokemonSearcher() {
     const [search, setSearch] = useState("");
 
+    handleSubmit = () => {
+    }
+
     return (
         <View style={styles.container}>
             <TextInput 
                 style={styles.search_input}
                 placeholder="search pokedex" 
                 value={search} 
-                onChangeText={(text) => {setSearch(text)}}>
+                onChangeText={(text) => {setSearch(text)}}
+                onSubmitEditing={handleSubmit}>
             </TextInput>
             <Text>{search}</Text>
         </View>

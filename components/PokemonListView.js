@@ -1,6 +1,12 @@
 import axios from "axios";
+
 import { useEffect, useState } from "react"
 import { StyleSheet, View, Text, Image } from "react-native";
+
+import PokemonListViewLoading from "./PokemonListViewLoading";
+
+import "../index.css"
+import "../fonts/Orbitron.ttf"
 
 // this component shows a list view of the Pokemon entry given the data url 
 export default function PokemonListView(props) {
@@ -12,7 +18,7 @@ export default function PokemonListView(props) {
             try {
                 const response = await axios.get(props.data_url);
                 setPokemonData(response.data);
-                console.log(response.data.sprites.other["official-artwork"].front_default);
+                // console.log(response.data.sprites.other["official-artwork"].front_default);
             } catch (error) {
                 console.log(error);
             }
@@ -23,7 +29,7 @@ export default function PokemonListView(props) {
 
     return ( 
         (pokemonData == null) ? 
-        <Text style={styles.loading}>Loading</Text> : 
+        <PokemonListViewLoading /> : 
         <View style={styles.container}>
             <Image style={styles.image} source={{uri: (pokemonData.sprites.other["official-artwork"].front_default)}}/>    
             <Text style={styles.name_text}>{pokemonData.name}</Text>
@@ -49,11 +55,10 @@ function PokemonTypeDisplay(props) {
 
 
 const styles = StyleSheet.create({
-    loading: {
-        textAlign: "center", 
-        fontSize: 20,
+    name_text: {
+        fontFamily: "Orbitron",
+        fontSize: 40,
         fontWeight: "500",
-        fontFamily: "Roboto",
     },
     container: {
         display: "flex",
@@ -70,22 +75,17 @@ const styles = StyleSheet.create({
         margin: 5,
         
     },
-    name_text: {
-        fontSize: 20, 
-        fontWeight: "500",
-        width: '50%',
-        textAlign: "center",
-    },
     image: {
         width: '20%',
         aspectRatio: 1/1,
         // mixBlendMode: "multiply"
     },
     type_text: {
+        fontFamily: "Orbitron",
         width: '30%',
         textAlign: "center",
-        fontWeight: "400",
-        fontSize: 15,
+        fontWeight: "800",
+        fontSize: 20,
         fontStyle: "italic",
         color: "#EEEEEE"
     }
