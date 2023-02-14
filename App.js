@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Pokeball from './components/Pokeball';
 import { SearchPokemon } from './features/api_requests';
-import PokemonSearcher from './components/PokemonSearcher';
+import PokemonSearchBar from './components/PokemonSearchBar';
 import PokemonList from './components/PokemonList';
 import PokemonListView from './components/PokemonListView';
 import PokemonFullView from './components/PokemonFullView';
 import PokemonListViewLoading from './components/PokemonListViewLoading';
+import PokemonSearchTip from './components/PokemonSearchTip';
 
 export default function App() {
  
@@ -17,11 +18,12 @@ export default function App() {
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
       <Pokeball />
-      <PokemonSearcher/>
+      <PokemonSearchBar/>
       {/* <PokemonList/> */}
       <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
       <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/>
       <PokemonListViewLoading/>
+      <PokemonSearchTip/>
     </View>
   );
 }
