@@ -10,7 +10,7 @@ import { View, StyleSheet, TextInput, Text, Button, Alert } from "react-native"
 
 
 
-export default function PokemonSearchBar() {
+export default function SearchBar() {
     const [search, setSearch] = useState("");
 
     // searches the pokemon that the user submits 

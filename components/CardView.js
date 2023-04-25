@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import { useEffect, useState } from "react";
 
 // renders the card data 
-export default function PokemonCardView(props) {
+export default function CardView(props) {
 
     const [data, setData] = useState();
 

@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import { ScrollView } from "react-native-web";
 
 // this component displays the full Pokemon information 
-export default function PokemonFullView(props) {
+export default function FullView(props) {
     const [pokemonData, setPokemonData] = useState(null);
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export default function PokemonFullView(props) {
 }
 
 // this component displays the image of the Pokemon type
-function PokemonTypeDisplay(props) { 
+function TypeDisplay(props) { 
     useEffect(() => {console.log(props.types[0].type.name)})
     return (
         (props.types.length == 1) ?
@@ -84,7 +84,7 @@ function PokemonAbilityDisplay(props) {
 }
 
 // this components displays the stats of the Pokemon 
-function PokemonStatsDisplay(props) {
+function StatsDisplay(props) {
     // // a stat is an array where the first index is the stat name and the second index is the stat value 
     const [statsList, setStatsList] = useState([]);
 

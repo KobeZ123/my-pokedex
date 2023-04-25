@@ -5,7 +5,7 @@ import { BASE_API_URL } from "../utils/constants"
 import { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 
-export default function PokemonSearchTip() {
+export default function SearchTip() {
 
     const [teddiursaData, setTeddiursaData] = useState(null);
 
