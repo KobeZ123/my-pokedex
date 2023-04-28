@@ -18,11 +18,9 @@ export default function PokemonListView(props) {
             try {
                 const response = await axios.get(props.data_url);
                 setPokemonData(response.data);
-                // console.log(response.data.sprites.other["official-artwork"].front_default);
             } catch (error) {
                 console.log(error);
             }
-            // console.log(pokemonData.sprites.other["official-artwork"].front_default);
         }
         fetchPokemonInfo();
     }, [])
@@ -78,7 +76,6 @@ const styles = StyleSheet.create({
     image: {
         width: '20%',
         aspectRatio: 1/1,
-        // mixBlendMode: "multiply"
     },
     type_text: {
         fontFamily: "Orbitron",

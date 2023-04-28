@@ -14,11 +14,9 @@ export default function SearchTip() {
             try {
                 const response = await axios.get(`${BASE_API_URL}/pokemon/teddiursa`);
                 setTeddiursaData(response.data);
-                // console.log(response.data.sprites.other["official-artwork"].front_default);
             } catch (error) {
                 console.log(error);
             }
-            // console.log(pokemonData.sprites.other["official-artwork"].front_default);
         }
         fetchPokemonInfo();
     }, [])

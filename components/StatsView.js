@@ -7,13 +7,6 @@ function PokemonStatsDisplay(props) {
     const [statsList, setStatsList] = useState([]);
 
     useEffect(() => {
-        // for (let i = 0; i < props.stats.length; i++) {
-        //     setStatsList(statsList => [...statsList, props.stats[i].stat.name]);
-        //     console.log(props.stats[i].stat.name);
-      
-        //     console.log(statsList);
-        // };
-        // add stats to the list of stats 
         props.stats.forEach((element) => {
             setStatsList(statsList => [...statsList, [element.stat.name, element.base_stat]]);
             console.log([element.stat.name, element.base_stat]);
