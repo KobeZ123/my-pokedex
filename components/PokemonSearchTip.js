@@ -26,11 +26,9 @@ export default function PokemonSearchTip() {
     function getTeddiursaImage(data) {
 
         if (data != null) {
-            console.log("returning stuff");
             return data.sprites.other["official-artwork"].front_default;
 
         }
-        console.log("NOPE stuff");
         return null;
         
     }

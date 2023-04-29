@@ -9,6 +9,7 @@ import PokemonListView from './components/PokemonListView';
 import PokemonFullView from './components/PokemonFullView';
 import PokemonListViewLoading from './components/PokemonListViewLoading';
 import PokemonSearchTip from './components/PokemonSearchTip';
+import PokemonCardView from './components/PokemonCardView';
 
 export default function App() {
  
@@ -19,10 +20,9 @@ export default function App() {
       <StatusBar style="auto" />
       <Pokeball />
       <PokemonSearchBar/>
-      {/* <PokemonList/> */}
-      <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
-      <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/>
-      <PokemonListViewLoading/>
+      <PokemonCardView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
+      {/* <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
+      <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       <PokemonSearchTip/>
     </View>
   );
