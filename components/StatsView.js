@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { StyleSheet, View, Text, Image } from "react-native";
 
 // this components displays the stats of the Pokemon 
-function PokemonStatsDisplay(props) {
+function StatsDisplay(props) {
     // // a stat is an array where the first index is the stat name and the second index is the stat value 
     const [statsList, setStatsList] = useState([]);
 

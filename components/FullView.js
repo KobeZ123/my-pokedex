@@ -28,9 +28,9 @@ export default function FullView(props) {
         <ScrollView contentContainerStyle={styles.main_container}>
             <Text style={styles.name_text}>{pokemonData.name}</Text>
             <Image style={styles.image} source={{uri: (pokemonData.sprites.other["official-artwork"].front_default)}}/>    
-            <PokemonTypeDisplay types={pokemonData.types} />
-            <PokemonAbilityDisplay abilities={pokemonData.abilities} />
-            <PokemonStatsDisplay stats={pokemonData.stats} />
+            <TypeDisplay types={pokemonData.types} />
+            <AbilityDisplay abilities={pokemonData.abilities} />
+            <StatsDisplay stats={pokemonData.stats} />
         </ScrollView>  
     )
 }
@@ -46,7 +46,7 @@ function TypeDisplay(props) {
 }
 
 // this component displays the abilities of the Pokemon
-function PokemonAbilityDisplay(props) {
+function AbilityDisplay(props) {
     const [abilities, setAbilities] = useState([]);
     const [hiddenAbilities, setHiddenAbilities] = useState([]);
 

@@ -4,6 +4,8 @@ import Pokeball from './components/Pokeball';
 import SearchBar from './components/SearchBar';
 import SearchTip from './components/SearchTip';
 import CardView from './components/CardView';
+import PageView from './components/PageView';
+import FullView from './components/FullView';
 
 export default function App() {
  
@@ -14,6 +16,8 @@ export default function App() {
       <Pokeball />
       <SearchBar/>
       <CardView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
+      <PageView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
+      {/* <FullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       {/* <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
       <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       <SearchTip/>

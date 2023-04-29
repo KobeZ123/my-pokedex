@@ -1,18 +1,19 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 import { useEffect, useState } from "react";
 
+import "../fonts/Orbitron.ttf";
+
 // renders the card data 
 export default function CardView(props) {
 
     const [data, setData] = useState();
 
     const fetchData = () => {
-        fetch("https://pokeapi.co/api/v2/pokemon/piplup")
+        fetch(props.data_url)
             .then(response => {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
                 setData(data);
             });
     }
@@ -23,11 +24,9 @@ export default function CardView(props) {
 
   
     return (
-        
-    
         (data == null) ? 
         <View style={styles.container}>
-            <Text>Loading . . .</Text> 
+            <Text style={styles.text}>Loading . . .</Text> 
         </View>: 
         <View style={styles.container}>
             <Image style={styles.image} source={{uri: (data.sprites.other["official-artwork"].front_default)}}/> 
@@ -37,12 +36,9 @@ export default function CardView(props) {
                     <Text style={[styles.text, styles.index_hashtag]}>#</Text>
                     <Text style={[styles.text, styles.index_value]}>{data.game_indices[0].game_index}</Text>
                 </View>
-                
             </View>
-            
         </View>
     );
-    
 }
 
 const styles = StyleSheet.create({
