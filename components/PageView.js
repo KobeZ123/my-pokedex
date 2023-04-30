@@ -12,6 +12,7 @@ export default function PageView(props) {
     const [id, setId] = useState();
     const [name, setName] = useState();
     const [dataObject, setDataObject] = useState({});
+    const [evolutionUrl, setEvolutionUrl] = useState("");
 
     const fetchData = () => {
         fetch(props.data_url).then(response => {
@@ -60,6 +61,7 @@ export default function PageView(props) {
                         dataObject["flavor_text_entries"].push(entry.flavor_text);
                     }
                 });
+                
                 console.log("final data");
                 console.log(dataObject);
             });
