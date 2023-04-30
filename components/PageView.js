@@ -1,6 +1,8 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 import { useEffect, useState } from "react";
 
+import "../styles/page_view_styles.css"
+
 // renders the page data 
 export default function PageView(props) {
 
@@ -32,47 +34,45 @@ export default function PageView(props) {
   
     return (
         (data == null) ? 
-        <View style={styles.container}>
-            <Text style={styles.text}>Loading . . .</Text> 
-        </View>: 
-        <View style={styles.container}>
-            <View style={styles.pokedex_details}>
-                <View style={styles.pokedex_left}>
-                    <Image style={styles.image} source={{uri: (data.sprites.other["official-artwork"].front_default)}}/> 
-                </View>
-                <View style={styles.pokedex_right}>
-                    <View style={styles.text_info_container}>
-                        <Text style={[styles.text, styles.name_text]}>{data.name}</Text>
-                        <View style={styles.index_info_container}>
-                            <Text style={[styles.text, styles.index_hashtag]}>#</Text>
-                            <Text style={[styles.text, styles.index_value]}>{data.game_indices[0].game_index}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.type_info_container}>
-                        <Text style={styles.type_label_text}>Type:</Text>
+        <div className="page_container">
+            <p className="text">Loading . . .</p> 
+        </div>: 
+        <div className="page_container">
+            <div className="pokedex_details">
+                <div className="pokedex_left">
+                    <img className="image" src={data.sprites.other["official-artwork"].front_default}/> 
+                </div>
+                <div className="pokedex_right">
+                    <div className="text_info_container">
+                        <p className="text name_text">{data.name}</p>
+                        <div className="index_info_container">
+                            <p className="text index_hashtag">#</p>
+                            <p className="text index_value">{data.game_indices[0].game_index}</p>
+                        </div>
+                    </div>
+                    <div className="type_info_container">
+                        <p className="type_label_text">Type:</p>
                         {
                             (data.types.length == 1) ?
-                            <Text style={styles.type_text}>{data.types[0].type.name}</Text> : 
-                            <Text style={styles.type_text}>{data.types[0].type.name}/{data.types[1].type.name}</Text>
+                            <p className="type_text">{data.types[0].type.name}</p> : 
+                            <p className="type_text">{data.types[0].type.name}/{data.types[1].type.name}</p>
                         }
-                    </View>
-                    <View style={styles.type_info_container}>
-                        {statsList.length == 0 ? <Text style={styles.loading}>Empty</Text> :
-                            <View>
+                    </div>
+                    <div className={styles.type_info_container}>
+                        {statsList.length == 0 ? <p style={styles.loading}>Empty</p> :
+                            <div>
                                 {statsList.map((stat_line) => 
-                                    <View style={styles.stat_line_container}>
-                                        <Text style={styles.ability_text}>{stat_line[0]}</Text>
-                                        <Text style={styles.ability_text}>{stat_line[1]}</Text>
-                                    </View>
+                                    <div className="stat_line_container">
+                                        <p className="ability_text">{stat_line[0]}</p>
+                                        <p className="ability_text">{stat_line[1]}</p>
+                                    </div>
                                 )}
-                            </View>
+                            </div>
                         }
-                    </View>
-                </View>
-                
-            </View>
-            
-        </View>
+                    </div>
+                </div> 
+            </div>  
+        </div>
     );
 }
 

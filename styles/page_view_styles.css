@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.page_container {
+    width: 100%;
+}
+
+.text {
+    font-family: "Orbitron";
+}
+
+.pokedex_details { 
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* margin-left: 30px;
+    margin-right: 30px; */
+}
+
+.pokedex_left {
+    flex: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.pokedex_right {
+    flex: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.image {
+    aspect-ratio: 1/1;
+    mix-blend-mode: multiply;
+    background-color: gainsboro;
+    border-radius: 5px;
+}
+
+.text_info_container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.name_text {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.index_info_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.index_hashtag {
+    color: dimgrey;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.index_value {
+    color: dimgrey;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.type_info_container {
+    text-align: center;
+}
+
+.type_label_text {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.type_text {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.ability_text {
+    margin: 1px 3px;
+ 
+}
+
+.stat_line_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
