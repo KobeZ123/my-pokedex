@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
+import { BASE_API_URL } from './utils/constants';
 import Pokeball from './components/Pokeball';
 import SearchBar from './components/SearchBar';
 import SearchTip from './components/SearchTip';
@@ -15,8 +16,8 @@ export default function App() {
       <StatusBar style="auto" />
       <Pokeball />
       <SearchBar/>
-      <CardView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
-      <PageView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
+      <CardView data_url={`${BASE_API_URL}/pokemon/piplup`}/>
+      <PageView data_url={`${BASE_API_URL}/pokemon/piplup`}/>
       {/* <FullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       {/* <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
       <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}

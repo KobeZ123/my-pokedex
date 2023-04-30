@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 import { useEffect, useState } from "react";
+import { BASE_API_URL } from "../utils/constants";
 
 import "../styles/page_view_styles.css"
 
@@ -8,28 +9,62 @@ export default function PageView(props) {
 
     const [data, setData] = useState();
     const [statsList, setStatsList] = useState([]);
+    const [id, setId] = useState();
+    const [name, setName] = useState();
+    const [dataObject, setDataObject] = useState({});
 
     const fetchData = () => {
-        fetch(props.data_url)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                console.log(data.stats);
-                setData(data);
-                data.stats.forEach((element) => {
-                    setStatsList(statsList => [...statsList, [element.stat.name, element.base_stat]]);
-                    console.log([element.stat.name, element.base_stat]);
-                    console.log(statsList);
-                });
-
-            });
+        fetch(props.data_url).then(response => {
+            return response.json();
+        }).then(data => {
+            setData(data);
+            setId(data.id);
+            setName(data.name);
+            data.stats.forEach((element) => {
+                setStatsList(statsList => 
+                    [...statsList, [element.stat.name, element.base_stat]])});   
+        });
     }
 
+    // fetches data when the component loads
     useEffect(() => {
         fetchData();
-        
     }, []);
+
+    // grabs data when the pokemon id is found
+    useEffect(() => {
+        if (id != null && name != null) {
+
+            Promise.all([
+                fetch(`${BASE_API_URL}/pokemon-species/${id}`),
+                fetch(`${BASE_API_URL}/evolution-chain/${name}`)
+            ]).then(responses => {
+                return Promise.all(responses.map(response => {
+                    return response.json();
+                }));
+            }).then(data => {
+                // gets the pokemon color
+                dataObject["color"] = data[0].color.name;
+                setDataObject(dataObject);
+                console.log(dataObject);
+                // gets the pokemon's proper english name
+                data[0].names.forEach(entry => {
+                    if (entry.language.name == "en") {
+                        dataObject["proper_name"] = entry.name;
+                    }
+                });
+                dataObject["flavor_text_entries"] = [];
+                // gets the pokemon's english flavor text entries
+                data[0].flavor_text_entries.forEach(entry => {
+                    if (entry.language.name == "en") {
+                        dataObject["flavor_text_entries"].push(entry.flavor_text);
+                    }
+                });
+                console.log("final data");
+                console.log(dataObject);
+            });
+        }
+    }, [id]);
 
   
     return (
@@ -51,11 +86,11 @@ export default function PageView(props) {
                         </div>
                     </div>
                     <div className="type_info_container">
-                        <p className="type_label_text">Type:</p>
+                        <p className="text type_label_text">type:</p>
                         {
                             (data.types.length == 1) ?
-                            <p className="type_text">{data.types[0].type.name}</p> : 
-                            <p className="type_text">{data.types[0].type.name}/{data.types[1].type.name}</p>
+                            <p className="text type_text">{data.types[0].type.name}</p> : 
+                            <p className="text type_text">{data.types[0].type.name}/{data.types[1].type.name}</p>
                         }
                     </div>
                     <div className={styles.type_info_container}>
@@ -63,8 +98,8 @@ export default function PageView(props) {
                             <div>
                                 {statsList.map((stat_line) => 
                                     <div className="stat_line_container">
-                                        <p className="ability_text">{stat_line[0]}</p>
-                                        <p className="ability_text">{stat_line[1]}</p>
+                                        <p className="text ability_text">{stat_line[0]}</p>
+                                        <p className="text ability_text">{stat_line[1]}</p>
                                     </div>
                                 )}
                             </div>

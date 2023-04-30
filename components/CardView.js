@@ -25,14 +25,14 @@ export default function CardView(props) {
   
     return (
         (data == null) ? 
-        <div className="container">
+        <div className="card_container">
             <p className="text">Loading . . .</p> 
         </div>: 
-        <div className="container">
-            <img className="image" src={data.sprites.other["official-artwork"].front_default}/> 
-            <div className="text_info_container">
+        <div className="card_container" onClick={() => {console.log("CLICKED");}}>
+            <img className="image_card" src={data.sprites.other["official-artwork"].front_default}/> 
+            <div className="text_info_container_card">
                 <p className="text name_text">{data.name}</p>
-                <div className="index_info_container">
+                <div className="index_info_container_card">
                     <p className="text index_hashtag">#</p>
                     <p className="text index_value">{data.game_indices[0].game_index}</p>
                 </div>

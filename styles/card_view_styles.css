@@ -3,20 +3,26 @@
     padding: 0;
 }
 
-.container {
+.card_container {
     display: flex;
     flex-direction: column;
-    width: 200px;
     padding-bottom: 8px;
-    padding-left: 5px;
-    padding-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.card_container:hover {
+    background-color: whitesmoke;
 }
 
 .text {
-    font-family: "Verdana";
+    font-family: "Verdana", "Orbitron";
 }
 
-.image {
+.image_card {
     aspect-ratio: 1/1;
     mix-blend-mode: multiply;
     background-color: gainsboro;
@@ -25,7 +31,7 @@
     max-height: 150px;
 }
 
-.text_info_container {
+.text_info_container_card {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -36,7 +42,7 @@
     font-size: 24px;
 }
 
-.index_info_container {
+.index_info_container_card {
     display: flex;
     flex-direction: row;
 }

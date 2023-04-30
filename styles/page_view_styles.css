@@ -8,7 +8,7 @@
 }
 
 .text {
-    font-family: "Orbitron";
+    font-family: "Verdana", "Orbitron";
 }
 
 .pokedex_details { 
@@ -23,6 +23,8 @@
     flex: 1;
     padding-left: 15px;
     padding-right: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 .pokedex_right {
@@ -33,6 +35,8 @@
 
 .image {
     aspect-ratio: 1/1;
+    max-width: 300px;
+    max-height: 300px;
     mix-blend-mode: multiply;
     background-color: gainsboro;
     border-radius: 5px;
@@ -72,11 +76,14 @@
 
 .type_info_container {
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .type_label_text {
     font-weight: 400;
     font-size: 18px;
+    margin-right: 25px;
 }
 
 .type_text {
@@ -86,11 +93,11 @@
 
 .ability_text {
     margin: 1px 3px;
- 
+    
 }
 
 .stat_line_container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
 }
