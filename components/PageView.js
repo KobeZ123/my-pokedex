@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     pokedex_details: { 
         display: "flex", 
         flexDirection: "row",
-        marginHorizontal: 50, 
+        marginHorizontal: 30, 
     },
     pokedex_left: {
         flex: 1,
@@ -149,4 +149,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
     }
+
+    
 }); 
