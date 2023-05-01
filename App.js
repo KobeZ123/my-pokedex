@@ -18,12 +18,12 @@ export default function App() {
       <Pokeball />
       <SearchBar/>
       <CardView data_url={`${BASE_API_URL}/pokemon/piplup`}/>
-      <PageView data_url={`${BASE_API_URL}/pokemon/piplup`}/>
+      <PageView data_url={`${BASE_API_URL}/pokemon/garchomp`}/>
       {/* <FullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       {/* <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
       <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       {/* trying ralts double evolution */}
-      <EvolutionView url="https://pokeapi.co/api/v2/evolution-chain/140/"/>
+      {/* <EvolutionView url="https://pokeapi.co/api/v2/evolution-chain/140/"/> */}
       <SearchTip/>
     </View>
   );

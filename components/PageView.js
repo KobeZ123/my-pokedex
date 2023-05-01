@@ -1,8 +1,10 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 import { useEffect, useState } from "react";
 import { BASE_API_URL } from "../utils/constants";
+import { lightenColor, colourNameToHex } from "../utils/utils";
 
 import "../styles/page_view_styles.css"
+import EvolutionView from "./EvolutionView";
 
 // renders the page data 
 export default function PageView(props) {
@@ -12,7 +14,7 @@ export default function PageView(props) {
     const [id, setId] = useState();
     const [name, setName] = useState();
     const [dataObject, setDataObject] = useState({});
-    const [evolutionUrl, setEvolutionUrl] = useState("");
+    const [evolutionUrl, setEvolutionUrl] = useState();
 
     const fetchData = () => {
         fetch(props.data_url).then(response => {
@@ -35,10 +37,9 @@ export default function PageView(props) {
     // grabs data when the pokemon id is found
     useEffect(() => {
         if (id != null && name != null) {
-
             Promise.all([
                 fetch(`${BASE_API_URL}/pokemon-species/${id}`),
-                fetch(`${BASE_API_URL}/evolution-chain/${name}`)
+                fetch(`${BASE_API_URL}/evolution-chain/${id}`)
             ]).then(responses => {
                 return Promise.all(responses.map(response => {
                     return response.json();
@@ -47,7 +48,8 @@ export default function PageView(props) {
                 // gets the pokemon color
                 dataObject["color"] = data[0].color.name;
                 setDataObject(dataObject);
-                console.log(dataObject);
+                console.log("data object");
+                console.log(data);
                 // gets the pokemon's proper english name
                 data[0].names.forEach(entry => {
                     if (entry.language.name == "en") {
@@ -62,11 +64,12 @@ export default function PageView(props) {
                     }
                 });
                 
+                setEvolutionUrl(data[0].evolution_chain.url);
                 console.log("final data");
                 console.log(dataObject);
             });
         }
-    }, [id]);
+    }, [id, name]);
 
   
     return (
@@ -77,11 +80,13 @@ export default function PageView(props) {
         <div className="page_container">
             <div className="pokedex_details">
                 <div className="pokedex_left">
-                    <img className="image" src={data.sprites.other["official-artwork"].front_default}/> 
+                    {dataObject.color && <img className="image" src={data.sprites.other["official-artwork"].front_default} 
+                        style={{backgroundColor: lightenColor(colourNameToHex(dataObject.color), 80)}}/>} 
+                    {evolutionUrl && <EvolutionView url={evolutionUrl} />}
                 </div>
                 <div className="pokedex_right">
                     <div className="text_info_container">
-                        <p className="text name_text">{data.name}</p>
+                        <p className="text name_text">{dataObject.proper_name}</p>
                         <div className="index_info_container">
                             <p className="text index_hashtag">#</p>
                             <p className="text index_value">{data.game_indices[0].game_index}</p>
@@ -95,18 +100,20 @@ export default function PageView(props) {
                             <p className="text type_text">{data.types[0].type.name}/{data.types[1].type.name}</p>
                         }
                     </div>
-                    <div className={styles.type_info_container}>
-                        {statsList.length == 0 ? <p style={styles.loading}>Empty</p> :
-                            <div>
-                                {statsList.map((stat_line) => 
-                                    <div className="stat_line_container">
-                                        <p className="text ability_text">{stat_line[0]}</p>
-                                        <p className="text ability_text">{stat_line[1]}</p>
-                                    </div>
-                                )}
-                            </div>
-                        }
-                    </div>
+                    {dataObject.flavor_text_entries && 
+                        <p className="text description_text">{dataObject.flavor_text_entries[Math.floor(Math.random() * dataObject.flavor_text_entries.length)]}</p>}
+                    
+                    {statsList.length == 0 ? <p className="loading">Loading</p> :
+                        <div className="stats_container">
+                            {statsList.map((stat_line) => 
+                                <div key={stat_line[0]} className="stat_line_container">
+                                    <p className="text ability_text">{stat_line[0]}</p>
+                                    <p className="text ability_text">{stat_line[1]}</p>
+                                </div>
+                            )}
+                        </div>
+                    }
+                    
                 </div> 
             </div>  
         </div>

@@ -27,27 +27,21 @@ export function colourNameToHex(color)
     "yellow":"#ffff00","yellowgreen":"#9acd32", 
     "darkgrey":"#a9a9a9", "darkslategrey":"#2f4f4f","dimgrey":"#696969","grey":"#808080","lightgray":"#d3d3d3","lightslategrey":"#778899","slategrey":"#708090"};
 
-    if (typeof colours[color.toLowerCase()] != 'undefined')
-        return colours[color.toLowerCase()];
+    if (typeof colours[color] != 'undefined') {
+
+        console.log("colour");
+        console.log(colours[color]);
+        return colours[color];
+    }
     return false;
 }
 
 // changes shade of hexcode color 
-export function newShade(hexColor, magnitude) {
-    hexColor = hexColor.replace(`#`, ``);
-    if (hexColor.length === 6) {
-        const decimalColor = parseInt(hexColor, 16);
-        let r = (decimalColor >> 16) + magnitude;
-        r > 255 && (r = 255);
-        r < 0 && (r = 0);
-        let g = (decimalColor & 0x0000ff) + magnitude;
-        g > 255 && (g = 255);
-        g < 0 && (g = 0);
-        let b = ((decimalColor >> 8) & 0x00ff) + magnitude;
-        b > 255 && (b = 255);
-        b < 0 && (b = 0);
-        return `#${(g | (b << 8) | (r << 16)).toString(16)}`;
-    } else {
-        return hexColor;
-    }
+export function lightenColor(color, percent) {
+    var num = parseInt(color.replace("#",""),16),
+    amt = Math.round(2.55 * percent),
+    R = (num >> 16) + amt,
+    B = (num >> 8 & 0x00FF) + amt,
+    G = (num & 0x0000FF) + amt;
+    return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
 };

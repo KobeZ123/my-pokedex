@@ -11,6 +11,8 @@ export default function EvolutionView(props) {
 
     // fetches the evolution data
     const fetchData = () => {
+        console.log("the url");
+        console.log(props.url);
         fetch(props.url).then(response => {
             return response.json();
         }).then(data => {
@@ -30,13 +32,13 @@ export default function EvolutionView(props) {
             let counter = 0;
             addToLevel(counter, data.chain);
             setEvolutionNames({ ...evolutionNames});
+            console.log("mounting");
+            console.log(evolutionNames);
         });
     };
 
     // maps pokemon id and image data for evolutions  
     const fetchEvolutionData = () => {
-        console.log("start s");
-        console.log(evolutionNames);
         let evolutionDataTemp = evolutionNames
         Object.keys(evolutionDataTemp).forEach(key => {
             evolutionDataTemp[key].forEach(entry => {
@@ -55,30 +57,29 @@ export default function EvolutionView(props) {
 
     // fetches evolution data 
     useEffect(() => {
-        console.log("fetching data");
         fetchData();
     }, []);
 
     useEffect(() => {
-        console.log("using effect");
         fetchEvolutionData();
     }, [evolutionNames])
 
-
-
-
     return (
-        <div className="evolutions_container">
-            {Object.values(evolutionData).map((stage) =>  
-                <div className="evolution_container">
-                    {stage.map((entry) => 
-                        <div className="evolution_container">
-                            <img className="evolution_img" src={entry.image_url}/> 
-                            <p className="text">{entry.name}</p>
-                        </div>
-                    )}
-                </div>
-            )}
+        <div className="stages_container">
+            <p className="evolutions_heading">Evolutions</p>
+            <div className="evolutions_container">     
+                {Object.values(evolutionData).map((stage, index) =>
+                    <div key={index} className="evolution_container">
+                        {stage.map((entry) => 
+                            <div key={entry.name} className="evolution_container">
+                                <img className="evolution_img" src={entry.image_url}/> 
+                                <p className="text">{entry.name}</p>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
         </div>
+
     );
 }

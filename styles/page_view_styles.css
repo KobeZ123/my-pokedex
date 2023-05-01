@@ -24,7 +24,9 @@
     padding-left: 15px;
     padding-right: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .pokedex_right {
@@ -39,7 +41,7 @@
     max-height: 300px;
     mix-blend-mode: multiply;
     background-color: gainsboro;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .text_info_container {
@@ -91,9 +93,18 @@
     font-size: 18px;
 }
 
+.description_text {
+    text-align: center;
+    padding: 5px 0px;
+}
+
 .ability_text {
     margin: 1px 3px;
-    
+}
+
+.stats_container {
+    display: flex;
+    flex-direction: column;
 }
 
 .stat_line_container {
@@ -102,16 +113,22 @@
     justify-content: space-between;
 }
 
+.evolutions_heading {
+    font-family: "Verdana";
+    font-weight: 600;
+    font-size: 24px;
+}
+
 .evolutions_container {
     display: flex;
     flex-direction: row;
     align-items: center;
-
 }
 
 .stages_container {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .evolution_container {
