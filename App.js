@@ -7,6 +7,7 @@ import SearchTip from './components/SearchTip';
 import CardView from './components/CardView';
 import PageView from './components/PageView';
 import FullView from './components/FullView';
+import EvolutionView from './components/EvolutionView';
 
 export default function App() {
  
@@ -21,6 +22,8 @@ export default function App() {
       {/* <FullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       {/* <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
       <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
+      {/* trying ralts double evolution */}
+      <EvolutionView url="https://pokeapi.co/api/v2/evolution-chain/140/"/>
       <SearchTip/>
     </View>
   );
