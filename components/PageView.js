@@ -5,6 +5,7 @@ import { lightenColor, colourNameToHex } from "../utils/utils";
 
 import "../styles/page_view_styles.css"
 import EvolutionView from "./EvolutionView";
+import StatsDisplay from "./StatsDisplay";
 
 // renders the page data 
 export default function PageView(props) {
@@ -103,96 +104,10 @@ export default function PageView(props) {
                     {dataObject.flavor_text_entries && 
                         <p className="text description_text">{dataObject.flavor_text_entries[Math.floor(Math.random() * dataObject.flavor_text_entries.length)]}</p>}
                     
-                    {statsList.length == 0 ? <p className="loading">Loading</p> :
-                        <div className="stats_container">
-                            {statsList.map((stat_line) => 
-                                <div key={stat_line[0]} className="stat_line_container">
-                                    <p className="text ability_text">{stat_line[0]}</p>
-                                    <p className="text ability_text">{stat_line[1]}</p>
-                                </div>
-                            )}
-                        </div>
-                    }
+                    <StatsDisplay stats={data.stats}/>
                     
                 </div> 
             </div>  
         </div>
     );
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-    }, 
-    text: {
-        fontFamily: "Orbitron",
-    },
-    pokedex_details: { 
-        display: "flex", 
-        flexDirection: "row",
-        marginHorizontal: 30, 
-    },
-    pokedex_left: {
-        flex: 1,
-        paddingHorizontal: 15, 
-    },
-    pokedex_right: {
-        flex: 1,
-        paddingHorizontal: 15, 
-    },
-    image: {
-        aspectRatio: 1/1,
-        mixBlendMode: "multiply",
-        backgroundColor: "gainsboro",
-        borderRadius: 5,
-    },
-    text_info_container: {
-        paddingVertical: 5,
-        paddingLeft: 10, 
-        textAlign: "center",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    name_text: {
-        fontWeight: "600",
-        fontSize: 24,
-    }, 
-    index_info_container: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-    }, 
-    index_hashtag: {
-        color: "dimgrey",
-        fontWeight: "600",
-        fontSize: 18,
-    },
-    index_value: {
-        color: "dimgrey",
-        fontWeight: "600",
-        fontSize: 18,
-    },
-    type_info_container: {
-        textAlign: "center",
-    },
-    type_label_text: {
-        fontWeight: "400",
-        fontSize: 18,
-    },
-    type_text: {
-        fontWeight: "500",
-        fontSize: 18,
-    }, 
-    ability_text: {
-        marginHorizontal: 3,
-        marginVertical: 1,
-    },
-    stat_line_container: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-    }
-
-    
-}); 
