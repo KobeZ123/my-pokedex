@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
         display: "flex",
         alignItems: "center",
         textAlign: "center",
-        backgroundColor: "#D3D3D3",
         borderRadius: 10,
         paddingHorizontal: 5,
         paddingVertical: 15,
+        width: '100%',
     }, 
     text: {
         fontFamily: "Verdana",

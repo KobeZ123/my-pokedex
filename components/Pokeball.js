@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         alignContent: "center",
         borderRadius: 100,
         overflow: "hidden",
+        padding: 15,
     },
     upper_half: {
         backgroundColor: '#F00',

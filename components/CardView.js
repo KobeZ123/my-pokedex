@@ -34,7 +34,7 @@ export default function CardView(props) {
     return (
         (data == null) ? 
         <div className="card_container">
-            <p className="text">{loadingStatus}</p> 
+            <p className="loading_text">{loadingStatus}</p> 
         </div>: 
         <div className="card_container" onClick={() => {console.log("CLICKED"); props.click();}}>
             <img className="image_card" src={data.sprites.other["official-artwork"].front_default}/> 

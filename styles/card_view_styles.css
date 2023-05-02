@@ -6,9 +6,8 @@
 .card_container {
     display: flex;
     flex-direction: column;
-    padding-bottom: 8px;
-    margin-left: 5px;
-    margin-right: 5px;
+    padding: 25px;
+    margin: 25px;
     border-radius: 5px;
     cursor: pointer;
     background-color: white;
@@ -22,13 +21,21 @@
     font-family: "Verdana", "Orbitron";
 }
 
+.loading_text {
+    font-family: "Verdana", "Orbitron";
+    font-size: 30px;
+    font-weight: 500;
+    padding: 15px 0px;
+    color: darkslategrey;
+}
+
 .image_card {
     aspect-ratio: 1/1;
     mix-blend-mode: multiply;
     background-color: gainsboro;
     border-radius: 5px;
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 .text_info_container_card {
