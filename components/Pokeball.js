@@ -4,6 +4,12 @@ import { View, StyleSheet, Animated, Easing } from "react-native";
 
 export default function Pokeball() {
     const spinValue = new Animated.Value(0);
+    const spin = spinValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: ['0deg', '360deg']
+    })
+
+    
     Animated.loop(
         Animated.timing(
           spinValue,
@@ -16,11 +22,7 @@ export default function Pokeball() {
         )
        ).start();
 
-    const spin = spinValue.interpolate({
-        inputRange: [0, 1],
-        outputRange: ['0deg', '360deg']
-    })
-
+    
     return (
         <Animated.View style={[styles.container, {transform: [{rotate: spin}]}]}>
             <View style={styles.upper_half}/>   

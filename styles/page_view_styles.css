@@ -5,10 +5,23 @@
 
 .page_container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .text {
     font-family: "Verdana", "Orbitron";
+}
+
+.return_button {
+    background-color: transparent;
+    border: none;
+    color: #888;
+    font-size: 2rem;
+    top: 1rem;
+    left: 1rem;
+    cursor: pointer;
 }
 
 .pokedex_details { 
@@ -56,7 +69,7 @@
 
 .name_text {
     font-weight: 600;
-    font-size: 32px;
+    font-size: 36px;
 }
 
 .index_info_container {
@@ -68,13 +81,13 @@
 .index_hashtag {
     color: dimgrey;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .index_value {
     color: dimgrey;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .type_info_container {
@@ -85,18 +98,19 @@
 
 .type_label_text {
     font-weight: 400;
-    font-size: 18px;
+    font-size: 28px;
     margin-right: 25px;
 }
 
 .type_text {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 28px;
 }
 
 .description_text {
     text-align: center;
     padding: 5px 0px;
+    font-size: 24px;
 }
 
 .stats_container {
@@ -110,10 +124,10 @@
     justify-content: space-between;
 }
 
-.evolutions_heading {
+.subsection_heading {
     font-family: "Verdana";
     font-weight: 600;
-    font-size: 20px;
+    font-size: 28px;
     margin: 5px 0px;
 }
 
@@ -170,6 +184,7 @@
 
 .stat_text {
     margin: 1px 3px;
+    font-size: 20px;
 }
 
 .stat_text_div {

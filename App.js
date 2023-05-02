@@ -22,7 +22,6 @@ export default function App() {
       <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       {/* trying ralts double evolution */}
       {/* <EvolutionView url="https://pokeapi.co/api/v2/evolution-chain/140/"/> */}
-      
     </View>
   );
 }
@@ -33,5 +32,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
   },
 });

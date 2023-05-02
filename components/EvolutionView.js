@@ -63,7 +63,7 @@ export default function EvolutionView(props) {
 
     return (
         <div className="stages_container">
-            <p className="evolutions_heading">Evolutions</p>
+            <p className="subsection_heading">Evolutions</p>
             <div className="evolutions_container">     
                 {Object.values(evolutionData).map((stage, index) =>
                     <div key={index} className="evolution_container">
@@ -77,6 +77,5 @@ export default function EvolutionView(props) {
                 )}
             </div>
         </div>
-
     );
 }
