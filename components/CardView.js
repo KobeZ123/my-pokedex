@@ -50,7 +50,7 @@ export default function CardView(props) {
     // );
 
     return (
-        <TouchableOpacity style={styles.card_container} onPress={() => { console.log("CLICKED"); props.click(); }}>
+        <TouchableOpacity style={styles.card_container} onPress={() => {props.click()}}>
           {data == null ?
             <View style={styles.card_container}>
               <Text style={styles.loading_text}>{loadingStatus}</Text>
@@ -62,7 +62,7 @@ export default function CardView(props) {
                 <Text style={[styles.text, styles.name_text]}>{data.name}</Text>
                 <View style={styles.index_info_container_card}>
                   <Text style={[styles.text, styles.index_hashtag]}>#</Text>
-                  <Text style={[styles.text, styles.index_value]}>{data.game_indices[0].game_index}</Text>
+                  <Text style={[styles.text, styles.index_value]}>{data.id}</Text>
                 </View>
               </View>
             </View>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     loading_text: {
       fontFamily: "Verdana",
-      fontSize: 60,
+      fontSize: 28,
       fontWeight: 500,
       paddingVertical: 15,
       paddingHorizontal: 0,

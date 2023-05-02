@@ -10,7 +10,10 @@ export default function StatsDisplay(props) {
         props.stats.forEach((element) => {
             setStatsList(statsList => 
                 [...statsList, [element.stat.name, element.base_stat]])});  
-    }, [])
+        return (() => {
+            setStatsList([]);
+        })
+    }, [props.stats])
 
     // return (
     //     <View style={styles.stats_container}>

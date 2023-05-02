@@ -8,7 +8,7 @@ import EvolutionView from "./EvolutionView";
 import StatsDisplay from "./StatsDisplay";
 
 // renders the page data 
-// props: data_url, clickReturn
+// props: data_url, clickReturn, routeTo
 export default function PageView(props) {
 
     const [data, setData] = useState();
@@ -30,7 +30,7 @@ export default function PageView(props) {
     // fetches data when the component loads
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [props.data_url]);
 
     // grabs data when the pokemon id is found
     useEffect(() => {
@@ -46,8 +46,6 @@ export default function PageView(props) {
                 // gets the pokemon color
                 dataObject["color"] = data[0].color.name;
                 setDataObject(dataObject);
-                console.log("color");
-                console.log(data[0].color.name);
                 // gets the pokemon's proper english name
                 data[0].names.forEach(entry => {
                     if (entry.language.name == "en") {
@@ -61,7 +59,9 @@ export default function PageView(props) {
                         dataObject["flavor_text_entries"].push(entry.flavor_text);
                     }
                 });
-                setEvolutionUrl(data[0].evolution_chain.url);
+                if (data[0].evolution_chain) {
+                    setEvolutionUrl(data[0].evolution_chain.url);
+                }
             });
         }
     }, [id, name]);
@@ -85,7 +85,7 @@ export default function PageView(props) {
     //               <Text style={[styles.text, styles.name_text]}>{dataObject.proper_name}</Text>
     //               <View style={styles.index_info_container}>
     //                 <Text style={[styles.text, styles.index_hashtag]}>#</Text>
-    //                 <Text style={[styles.text, styles.index_value]}>{data.game_indices[0].game_index}</Text>
+    //                 <Text style={[styles.text, styles.index_value]}>{data.id}</Text>
     //               </View>
     //             </View>
     //             <View style={styles.type_info_container}>
@@ -113,15 +113,15 @@ export default function PageView(props) {
                 <div className="pokedex_details">
                 <div className="pokedex_left">
                     {dataObject.color && <img className="image" src={data.sprites.other["official-artwork"].front_default} 
-                        style={{backgroundColor: lightenColor(colourNameToHex(dataObject.color), 80)}}/>} 
-                    {evolutionUrl && <EvolutionView url={evolutionUrl} />}
+                        style={{backgroundColor: lightenColor(colourNameToHex(dataObject.color), 60)}}/>} 
+                    {evolutionUrl && <EvolutionView url={evolutionUrl} selected={data.name} routeTo={props.routeTo}/>}
                 </div>
                 <div className="pokedex_right">
                     <div className="text_info_container">
                         <p className="text name_text">{dataObject.proper_name}</p>
                         <div className="index_info_container">
                             <p className="text index_hashtag">#</p>
-                            <p className="text index_value">{data.game_indices[0].game_index}</p>
+                            <p className="text index_value">{data.id}</p>
                         </div>
                     </div>
                     <div className="type_info_container">

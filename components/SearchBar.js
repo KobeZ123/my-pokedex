@@ -15,10 +15,10 @@ export default function SearchBar() {
     const [search, setSearch] = useState("");
     const [resultUrl, setResultUrl] = useState();
     const [displayFullPage, setDisplayFullPage] = useState(false);
+    const [returnUrl, setReturnUrl] = useState();
 
     // searches the pokemon that the user submits 
     function handleSubmit() {
-        console.log(`${BASE_API_URL}/pokemon/${search}`);
         if (search != "") {
             setResultUrl(`${BASE_API_URL}/pokemon/${search.toLowerCase()}`);
         }
@@ -26,11 +26,21 @@ export default function SearchBar() {
 
     function handleCardClick() {
         setDisplayFullPage(true);
+        setReturnUrl(resultUrl);
     }
 
     function handleReturnClick() {
         setDisplayFullPage(false);
+        setResultUrl(returnUrl);
     }
+
+    // sets the result url to the pokemon's endpoint
+    function routeTo(pokemon) {
+        setResultUrl(`${BASE_API_URL}/pokemon/${pokemon.toLowerCase()}`);
+    }
+
+    useEffect(() => {
+    }, [resultUrl]);
 
     return (
         <View style={styles.container}>
@@ -51,7 +61,7 @@ export default function SearchBar() {
                 </View>
             }
             {!displayFullPage && resultUrl && <CardView data_url={resultUrl} click={handleCardClick}/> || !displayFullPage && <SearchTip />}
-            {displayFullPage && resultUrl && <PageView data_url={resultUrl} clickReturn={handleReturnClick}/>}
+            {displayFullPage && resultUrl && <PageView data_url={resultUrl} clickReturn={handleReturnClick} routeTo={routeTo}/>}
         </View>
     )
 }

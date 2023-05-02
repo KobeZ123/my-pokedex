@@ -28,9 +28,6 @@ export function colourNameToHex(color)
     "darkgrey":"#a9a9a9", "darkslategrey":"#2f4f4f","dimgrey":"#696969","grey":"#808080","lightgray":"#d3d3d3","lightslategrey":"#778899","slategrey":"#708090"};
 
     if (typeof colours[color] != 'undefined') {
-
-        console.log("colour");
-        console.log(colours[color]);
         return colours[color];
     }
     return false;

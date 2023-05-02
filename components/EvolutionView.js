@@ -68,8 +68,9 @@ export default function EvolutionView(props) {
                 {Object.values(evolutionData).map((stage, index) =>
                     <div key={index} className="evolution_container">
                         {stage.map((entry) => 
-                            <div key={entry.name} className="evolution_container">
-                                <img className="evolution_img" src={entry.image_url}/> 
+                            <div key={entry.name} className="evolution_container" onClick={() => {props.routeTo(entry.name)}}>
+                                <img className="evolution_img" src={entry.image_url} 
+                                    style={{backgroundColor: (props.selected == entry.name) ? "lightyellow" : "gainsboro"}}/> 
                                 <p className="text">{entry.name}</p>
                             </div>
                         )}
