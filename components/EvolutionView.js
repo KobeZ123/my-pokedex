@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { BASE_API_URL } from "../utils/constants";
 
 // displays the pokemon's evolutionary line 
+// props: url, selected
 export default function EvolutionView(props) {
 
     // stores pokemon evolution names in arrays [0: basic, 1: stage 1, 2: stage 2]
@@ -11,8 +12,6 @@ export default function EvolutionView(props) {
 
     // fetches the evolution data
     const fetchData = () => {
-        console.log("the url");
-        console.log(props.url);
         fetch(props.url).then(response => {
             return response.json();
         }).then(data => {
@@ -32,8 +31,6 @@ export default function EvolutionView(props) {
             let counter = 0;
             addToLevel(counter, data.chain);
             setEvolutionNames({ ...evolutionNames});
-            console.log("mounting");
-            console.log(evolutionNames);
         });
     };
 

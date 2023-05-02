@@ -1,30 +1,28 @@
 import axios from "axios";
 
-import { BASE_API_URL } from "../utils/constants"
+import { BASE_API_URL } from "../utils/constants";
+import { View, StyleSheet, TextInput, Text, Button, Alert } from "react-native";
+import { useState, useEffect } from "react";
 
-import { useState } from "react";
-import { View, StyleSheet, TextInput, Text, Button, Alert } from "react-native"
-
-
+import CardView from "./CardView";
+import PageView from "./PageView";
 
 
 
 
 export default function SearchBar() {
     const [search, setSearch] = useState("");
+    const [resultUrl, setResultUrl] = useState();
+    const [displayFullPage, setDisplayFullPage] = useState(false);
 
     // searches the pokemon that the user submits 
-    async function handleSubmit() {
+    function handleSubmit() {
         console.log(`${BASE_API_URL}/pokemon/${search}`);
-        try {
-            const response = await axios.get(`${BASE_API_URL}/pokemon/${search}`);
-            Alert.alert("success");
-            console.log("success");
-        }
-        catch (error) {
-            Alert.alert(error);
-            console.log(error);
-        }
+        setResultUrl(`${BASE_API_URL}/pokemon/${search}`);
+    }
+
+    function handleCardClick() {
+        setDisplayFullPage(true);
     }
 
     return (
@@ -44,10 +42,11 @@ export default function SearchBar() {
             </View>
             
             <Text>{search}</Text>
+            {!displayFullPage && resultUrl && <CardView data_url={resultUrl} click={handleCardClick}/>}
+            {displayFullPage && resultUrl && <PageView data_url={resultUrl}/>}
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     container : {
@@ -65,4 +64,4 @@ const styles = StyleSheet.create({
         textAlign: "center",
         placeholderTextColor: "#AAAAAA",
     }, 
-})
+});

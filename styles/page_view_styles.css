@@ -114,7 +114,8 @@
 .evolutions_heading {
     font-family: "Verdana";
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
+    margin: 5px 0px;
 }
 
 .evolutions_container {

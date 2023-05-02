@@ -11,7 +11,6 @@ import StatsDisplay from "./StatsDisplay";
 export default function PageView(props) {
 
     const [data, setData] = useState();
-    const [statsList, setStatsList] = useState([]);
     const [id, setId] = useState();
     const [name, setName] = useState();
     const [dataObject, setDataObject] = useState({});
@@ -24,9 +23,6 @@ export default function PageView(props) {
             setData(data);
             setId(data.id);
             setName(data.name);
-            data.stats.forEach((element) => {
-                setStatsList(statsList => 
-                    [...statsList, [element.stat.name, element.base_stat]])});   
         });
     }
 
@@ -49,8 +45,8 @@ export default function PageView(props) {
                 // gets the pokemon color
                 dataObject["color"] = data[0].color.name;
                 setDataObject(dataObject);
-                console.log("data object");
-                console.log(data);
+                console.log("color");
+                console.log(data[0].color.name);
                 // gets the pokemon's proper english name
                 data[0].names.forEach(entry => {
                     if (entry.language.name == "en") {
@@ -66,8 +62,6 @@ export default function PageView(props) {
                 });
                 
                 setEvolutionUrl(data[0].evolution_chain.url);
-                console.log("final data");
-                console.log(dataObject);
             });
         }
     }, [id, name]);

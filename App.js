@@ -15,8 +15,8 @@ export default function App() {
       <StatusBar style="auto" />
       <Pokeball />
       <SearchBar/>
-      <CardView data_url={`${BASE_API_URL}/pokemon/piplup`}/>
-      <PageView data_url={`${BASE_API_URL}/pokemon/gallade`}/>
+      {/* <CardView data_url={`${BASE_API_URL}/pokemon/piplup`}/>
+      <PageView data_url={`${BASE_API_URL}/pokemon/gallade`}/> */}
       {/* <FullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}
       {/* <PokemonListView data_url="https://pokeapi.co/api/v2/pokemon/piplup"/>
       <PokemonFullView data_url="https://pokeapi.co/api/v2/pokemon/garchomp"/> */}

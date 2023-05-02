@@ -22,13 +22,10 @@ export default function SearchTip() {
     }, [])
 
     function getTeddiursaImage(data) {
-
         if (data != null) {
             return data.sprites.other["official-artwork"].front_default;
-
         }
         return null;
-        
     }
 
     return (
@@ -52,7 +49,7 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
     }, 
     text: {
-        fontFamily: "Orbitron",
+        fontFamily: "Verdana",
         fontSize: 30,
         fontWeight: "500",
     },
