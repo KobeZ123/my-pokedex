@@ -29,6 +29,14 @@ export default function SearchBar() {
         setReturnUrl(resultUrl);
     }
 
+    function onChangeText(text) {
+        setSearch(text);
+        if (text == "") {
+            setResultUrl(null);
+            setReturnUrl(null);
+        }
+    }
+
     function handleReturnClick() {
         setDisplayFullPage(false);
         setResultUrl(returnUrl);
@@ -50,7 +58,7 @@ export default function SearchBar() {
                         style={styles.search_input}
                         placeholder="search pokedex" 
                         value={search} 
-                        onChangeText={(text) => {setSearch(text)}}
+                        onChangeText={(text) => {onChangeText(text)}}
                         onSubmitEditing={handleSubmit}>
                     </TextInput>
                     <TouchableOpacity 

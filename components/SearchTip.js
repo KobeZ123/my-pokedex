@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingHorizontal: 5,
         paddingVertical: 15,
-        width: '100%',
+        marginHorizontal: 50,
     }, 
     text: {
         fontFamily: "Verdana",
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '50%',
+        maxWidth: 500,
         aspectRatio: 1/1,
     }
 });

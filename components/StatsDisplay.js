@@ -30,7 +30,7 @@ export default function StatsDisplay(props) {
 
     return (
         <div className="stats_container">
-            <p className="text">Stats:</p>
+            <p className="text subsection_heading">Stats:</p>
             {statsList.length == 0 ? <p className="loading">Loading</p> :
                 <div className="stats_container">
                     {statsList.map((stat_line) => 
