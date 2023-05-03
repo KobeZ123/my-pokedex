@@ -12,8 +12,9 @@ The user can press their search result card and see a page view of the Pokémon 
 ![search-result-desktop-view](https://user-images.githubusercontent.com/57577392/235815724-79168d01-13c5-43d5-8636-4c87498f0db5.PNG) <br/>
 
 ![search-page-desktop-view](https://user-images.githubusercontent.com/57577392/235815731-bbec93b0-d7a7-44ae-8a5f-04e43c18d2bb.PNG) <br/>
-
-<img src="https://user-images.githubusercontent.com/57577392/235815730-9136d82b-aa0b-4e5e-ae35-3994d6a7f97c.PNG" width="300" border="5px solid #555"/>
+<kbd>
+  <img src="https://user-images.githubusercontent.com/57577392/235815730-9136d82b-aa0b-4e5e-ae35-3994d6a7f97c.PNG" width="300" border="5px solid #555"/>
+ </kbd>
 <img src="https://user-images.githubusercontent.com/57577392/235815736-2ebbedf5-b2f5-460a-b712-04af84d68c7f.PNG" width="300"/>
 
 The app also handles logic for complicated Pokémon evolution lines, displaying branching evolutions!
